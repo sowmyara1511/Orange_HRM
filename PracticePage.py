@@ -41,9 +41,38 @@ driver.find_element(By.XPATH, "//input[@id='end-date']").send_keys("2025-08-07")
 # Click submit
 driver.find_element(By.XPATH, "//button[@class='submit-btn' and text()='Submit']").click()
 
+#Assert no file selected
+driver.implicitly_wait(10)
+driver.find_element(By.XPATH,"//button[normalize-space()='Upload Multiple Files']").click()
+NoFile_Element=driver.find_element(By.XPATH,"//p[contains(text(),'No files selected.')]")
+assert NoFile_Element.text == "No files selected."
+
 #Single file upload
 file_path= "C:\\Users\\srini\\Downloads\\SRINIVAS-R.txt"
 upload_file=driver.find_element(By.XPATH,"//input[@id='singleFileInput']")
 upload_file.send_keys(file_path)
 driver.implicitly_wait(10)
 driver.find_element(By.XPATH,"//button[normalize-space()='Upload Single File']").click()
+
+#multiple file upload
+file_path1="C:\\Users\\srini\\Downloads\\SQL Syllabus.pdf"
+file_path= "C:\\Users\\srini\\Downloads\\SRINIVAS-R.txt"
+upload_file.send_keys(file_path1)
+upload_file.send_keys(file_path)
+driver.implicitly_wait(10)
+driver.find_element(By.XPATH,"//button[normalize-space()='Upload Multiple Files']").click()
+
+#Accessing data from statice web table
+rows= driver.find_elements(By.XPATH,"//table[@name='BookTable']//tbody/tr")
+
+#count the columns in the table
+for i in rows:
+  cols=i.find_elements(By.TAG_NAME,"td")
+  for j in cols:
+     if j=="Selenium":
+        print("|",j.text)
+
+
+
+
+
