@@ -1,7 +1,8 @@
 
 from selenium import webdriver
 import sys
-print(sys.executable)
+#edge_driver_path = "C:\Drivers\edgedriver_win64\msedgedriver.exe"
+#driver = webdriver.Edge(edge_driver_path)
 driver= webdriver.Chrome()
 driver.maximize_window()
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
