@@ -71,8 +71,38 @@ rows= driver.find_elements(By.XPATH,"//table[@name='BookTable']//tbody/tr")
 for i in rows:
   cols=i.find_elements(By.TAG_NAME,"td")
   for j in cols:
-     if j=="Selenium":
+     #if j=="Selenium":
         print("|",j.text)
+
+
+#Accessing data from dynamic web table
+rows= driver.find_elements(By.XPATH,"//table[@id='taskTable']//tbody/tr")
+
+#count the columns in the table
+for row in rows:
+  cols=row.find_elements(By.TAG_NAME,"td")
+  for col in cols:
+     #if j=="Selenium":
+        print("|",col.text)
+
+#pagination web table , select all the data in 3rd page
+table_data =driver.find_elements(By.XPATH,"//table[@id='productTable']")
+pages= driver.find_elements(By.XPATH,"//ul[@id='pagination']")
+n=len(pages)
+
+for page in pages:
+    if page ==3:
+        page.click()
+        break
+time.sleep(4)
+
+driver.implicitly_wait(10)
+checkboxes = driver.find_elements(By.XPATH, "//table[@id='productTable']//input[@type='checkbox']")
+for checkbox in checkboxes:
+    checkbox.click()
+print("All checkboxes are selected")
+
+
 
 
 
