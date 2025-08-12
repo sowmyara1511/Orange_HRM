@@ -1,4 +1,6 @@
 #Open AutomationPractice page and fill the text fields
+import time
+
 import click
 from selenium import webdriver
 from selenium.webdriver.common.by import By
