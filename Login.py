@@ -1,3 +1,5 @@
+#scenario1: Open a website , open another site and go back to same site
+from sys import executable
 
 from selenium import webdriver
 import sys
